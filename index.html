@@ -3,388 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LG U+ 평택중앙점 | 공식 인증 매장</title>
+    <title>LGU+ 공식 인증 | 기업체 임직원 전용 특판몰</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            scroll-behavior: smooth; 
+            -webkit-font-smoothing: antialiased;
+        }
+        .lgu-pink { color: #E6007E; }
+        .bg-lgu-pink { background-color: #E6007E; }
+        .bg-lgu-gradient { background: linear-gradient(135deg, #E6007E 0%, #B00061 100%); }
+        .card-shadow { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1); }
         
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #ffffff;
+        /* Floating Chat Button Animation */
+        @keyframes pulse-custom {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 0, 126, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(230, 0, 126, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 0, 126, 0); }
+        }
+        .chat-btn-animate {
+            animation: pulse-custom 2s infinite;
         }
 
-        /* LG U+ Brand Colors */
-        :root {
-            --uplus-magenta: #E6007E;
-            --uplus-dark: #222222;
-            --uplus-gray: #f4f4f4;
-        }
-
-        .uplus-magenta { color: var(--uplus-magenta); }
-        .uplus-bg-magenta { background-color: var(--uplus-magenta); }
-        
-        .uplus-header {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .btn-uplus {
-            background-color: var(--uplus-magenta);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-uplus:hover {
-            background-color: #c5006c;
-            transform: translateY(-2px);
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 900;
-            line-height: 1.2;
-            color: var(--uplus-dark);
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+        /* Sub-model Accordion */
+        .model-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
             opacity: 0;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .model-details.active {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 1.5rem;
         }
 
-        #success-modal {
-            display: none;
+        /* Entrance Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
         }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="bg-slate-50 text-slate-800">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white uplus-header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-3">
-                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="50" fill="#E6007E"/>
-                        <path d="M30 35H40V65H30V35ZM50 35H70V43H50V52H65V60H50V65H40V35H50Z" fill="white"/>
-                    </svg>
-                    <div class="flex flex-col">
-                        <span class="text-xl font-black tracking-tight leading-none">LG U<span class="uplus-magenta">+</span></span>
-                        <span class="text-xs font-bold text-gray-500">평택중앙점</span>
+    <!-- Floating Action Button -->
+    <a href="https://4x6w6.channel.io" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-lgu-pink text-white p-4 rounded-full shadow-2xl flex items-center justify-center chat-btn-animate hover:scale-110 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+            <path d="M2.121 15.858A.5.5 0 0 1 1.5 15.5c0-1.28.182-2.527.513-3.693C.723 10.536 0 8.85 0 7c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-1.05.63-2.338 1.124-3.532 1.164"/>
+        </svg>
+        <span class="ml-2 font-bold hidden md:block">실시간 상담</span>
+    </a>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-lgu-pink text-white font-black px-3 py-1 rounded text-xl italic tracking-tighter">LG U+</div>
+                <div class="h-4 w-[1px] bg-gray-300 hidden sm:block"></div>
+                <span class="text-sm font-semibold text-gray-600 hidden sm:block">공식 인증 대리점</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="https://4x6w6.channel.io" target="_blank" class="text-gray-600 px-4 py-2 text-sm font-bold hover:text-lgu-pink transition">문의하기</a>
+                <a href="#apply" class="bg-lgu-pink text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-pink-700 transition shadow-lg shadow-pink-200">상담 신청</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-lgu-gradient text-white py-20 px-4 overflow-hidden relative">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-pink-300 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="bg-white text-lgu-pink inline-block px-4 py-1.5 rounded-full text-xs font-black mb-6 uppercase tracking-wider">Corporate Special Offer</h2>
+                <h1 class="text-4xl md:text-6xl font-black mb-8 leading-[1.2]">
+                    5월 가정의 달 맞이<br>
+                    <span class="text-yellow-300">기업체 임직원 및 가족 특별 공구전</span>
+                </h1>
+                <p class="text-lg md:text-2xl opacity-90 mb-12 font-light leading-relaxed">
+                    아이폰 17 & 갤럭시 S26 시리즈 압도적 혜택<br class="hidden sm:block">
+                    효도폰, 키즈폰 단말기 <span class="font-bold border-b-2 border-yellow-300">할부금 0원</span> 혜택까지!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 shadow-xl">
+                        <p class="text-sm font-medium opacity-80 mb-1">최신 플래그십 시리즈</p>
+                        <p class="text-2xl font-black">월 할부금 2만원대~</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 shadow-xl">
+                        <p class="text-sm font-medium opacity-80 mb-1">실속형 / 키즈 / 효도폰</p>
+                        <p class="text-2xl font-black text-yellow-300 underline underline-offset-4">단말 할부금 0원</p>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-10 font-bold text-sm">
-                    <a href="#home" class="hover:text-[#E6007E] transition">홈</a>
-                    <a href="#benefits" class="hover:text-[#E6007E] transition">브랜드 혜택</a>
-                    <a href="#products" class="hover:text-[#E6007E] transition">단말기 안내</a>
-                    <a href="#location" class="hover:text-[#E6007E] transition">오시는 길</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Offers -->
+    <section class="py-24 container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h3 class="text-3xl md:text-4xl font-black mb-4">Premium Flagship</h3>
+            <p class="text-gray-500 font-medium">LGU+ 임직원 전용 채널에서만 가능한 특별 공시지원금 + 추가 지원</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <!-- iPhone Card -->
+            <div class="reveal bg-white rounded-[2rem] overflow-hidden card-shadow border border-gray-100 flex flex-col cursor-pointer transition-all hover:scale-[1.02] hover:border-pink-200" onclick="toggleDetails('iphone')">
+                <div class="p-10 text-center bg-slate-50 relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-black text-white text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-tighter">New</div>
+                    <h4 class="text-2xl font-black mb-6 flex items-center justify-center">
+                        iPhone 17 Series
+                        <svg id="iphone-arrow" class="w-5 h-5 ml-2 transition-transform duration-300 text-lgu-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </h4>
+                    <div class="h-56 flex items-center justify-center mb-6">
+                        <img src="https://i.ibb.co/G4PNWL6x/17.png" alt="iPhone 17" class="h-full object-contain drop-shadow-2xl">
+                    </div>
                 </div>
-                <div>
-                    <a href="#contact" class="btn-uplus px-6 py-2.5 rounded-full font-bold text-sm shadow-lg">
-                        상담 예약
+                <div class="p-8 bg-white flex-1">
+                    <div class="text-center mb-6">
+                        <span class="text-gray-400 line-through text-sm">기기값 129만원</span>
+                        <div class="text-3xl font-black text-lgu-pink mt-1">기기값 85만원 할인</div>
+                        <p class="text-xs font-bold text-pink-600 mt-2 bg-pink-50 inline-block px-3 py-1 rounded-full">[번호이동 특별가]</p>
+                    </div>
+                    
+                    <div id="iphone-details" class="model-details border-t border-dashed border-gray-200">
+                        <p class="text-sm font-bold text-gray-700 mb-4 text-center">아이폰 추가 라인업</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm p-4 bg-gray-50 rounded-xl border-l-4 border-lgu-pink">
+                                <span class="font-bold text-gray-800">iPhone 16 (128G)</span>
+                                <span class="text-lgu-pink font-black italic underline">월 1만원대</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 text-center mt-3 font-medium">※ 모델별 용량 및 색상 재고 상담 필수</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galaxy Card -->
+            <div class="reveal bg-white rounded-[2rem] overflow-hidden card-shadow border border-gray-100 flex flex-col cursor-pointer transition-all hover:scale-[1.02] hover:border-blue-200" onclick="toggleDetails('galaxy')">
+                <div class="p-10 text-center bg-slate-50 relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-tighter">Best</div>
+                    <h4 class="text-2xl font-black mb-6 flex items-center justify-center">
+                        Galaxy S26 Series
+                        <svg id="galaxy-arrow" class="w-5 h-5 ml-2 transition-transform duration-300 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </h4>
+                    <div class="h-56 flex items-center justify-center mb-6">
+                        <img src="https://i.ibb.co/TDrLmbH5/S26.png" alt="Galaxy S26" class="h-full object-contain drop-shadow-2xl">
+                    </div>
+                </div>
+                <div class="p-8 bg-white flex-1">
+                    <div class="text-center mb-6">
+                        <span class="text-gray-400 line-through text-sm">기기값 125만원</span>
+                        <div class="text-3xl font-black text-lgu-pink mt-1">기기값 95만원 할인~</div>
+                        <p class="text-xs font-bold text-blue-600 mt-2 bg-blue-50 inline-block px-3 py-1 rounded-full">[번호이동/기변 공통]</p>
+                    </div>
+
+                    <div id="galaxy-details" class="model-details border-t border-dashed border-gray-200">
+                        <p class="text-sm font-bold text-gray-700 mb-4 text-center">갤럭시 추가 라인업</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm p-4 bg-gray-50 rounded-xl border-l-4 border-blue-500">
+                                <span class="font-bold text-gray-800">Galaxy S25 Edge</span>
+                                <span class="text-lgu-pink font-black italic underline">월 1만원대</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 text-center mt-3 font-medium">※ 기기변경 시에도 동일 혜택 적용 가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Month Special -->
+    <section class="py-24 bg-pink-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h3 class="text-3xl md:text-4xl font-black mb-6">가정의 달 <span class="text-lgu-pink underline decoration-pink-200 underline-offset-8">할부금 0원</span> 감사제</h3>
+            <p class="text-gray-600 mb-16 text-lg">우리 아이 첫 휴대폰부터 부모님 효도폰까지 부담 없이 선물하세요.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+                <!-- Buddy 4 -->
+                <div class="reveal bg-white p-8 rounded-3xl shadow-xl shadow-pink-100 flex flex-col group hover:-translate-y-2 transition-transform">
+                    <span class="bg-gray-900 text-white text-[10px] px-3 py-1.5 rounded-lg mb-6 inline-block font-black uppercase tracking-widest">Efficiency</span>
+                    <div class="flex-1 flex flex-col items-center mb-8">
+                        <img src="https://i.ibb.co/Z1G2R2BJ/4.png" alt="Galaxy Buddy 4" class="h-40 object-contain mb-6 drop-shadow-lg group-hover:scale-110 transition-transform">
+                        <div class="w-full">
+                            <h5 class="text-xl font-black mb-2">갤럭시 버디 4</h5>
+                            <p class="text-sm text-gray-500 leading-relaxed font-medium">가성비와 성능을 동시에 잡은 임직원 실속 추천 모델</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-lgu-pink text-center py-4 border-t border-gray-50">기기값 0원</div>
+                </div>
+                <!-- Senior Phone -->
+                <div class="reveal bg-white p-8 rounded-3xl shadow-xl shadow-pink-100 flex flex-col border-2 border-lgu-pink group hover:-translate-y-2 transition-transform">
+                    <span class="bg-lgu-pink text-white text-[10px] px-3 py-1.5 rounded-lg mb-6 inline-block font-black uppercase tracking-widest">Hyo-Do</span>
+                    <div class="flex-1 flex flex-col items-center mb-8">
+                        <img src="https://i.ibb.co/zTt058mm/image.png" alt="스타일 폴더" class="h-40 object-contain mb-6 drop-shadow-lg group-hover:scale-110 transition-transform">
+                        <div class="w-full">
+                            <h5 class="text-xl font-black mb-2">스타일 폴더</h5>
+                            <p class="text-sm text-gray-500 leading-relaxed font-medium">큰 자판과 넓은 화면으로 부모님께 최적화된 편의성</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-lgu-pink text-center py-4 border-t border-gray-50">기기값 0원</div>
+                </div>
+                <!-- Kids Phone -->
+                <div class="reveal bg-white p-8 rounded-3xl shadow-xl shadow-pink-100 flex flex-col group hover:-translate-y-2 transition-transform">
+                    <span class="bg-blue-600 text-white text-[10px] px-3 py-1.5 rounded-lg mb-6 inline-block font-black uppercase tracking-widest">For Kids</span>
+                    <div class="flex-1 flex flex-col items-center mb-8">
+                        <img src="https://i.ibb.co/wN65jR4C/2.png" alt="무너폰 2" class="h-40 object-contain mb-6 drop-shadow-lg group-hover:scale-110 transition-transform">
+                        <div class="w-full">
+                            <h5 class="text-xl font-black mb-2">춘식이 무너폰 2</h5>
+                            <p class="text-sm text-gray-500 leading-relaxed font-medium">위치 확인과 스마트폰 사용 제어로 안심하고 선물</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-lgu-pink text-center py-4 border-t border-gray-50">기기값 0원</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internet & TV -->
+    <section class="py-24 container mx-auto px-4">
+        <div class="reveal bg-slate-900 text-white rounded-[2.5rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-lgu-pink opacity-10 rounded-full -mr-32 -mt-32"></div>
+            
+            <div class="mb-12 lg:mb-0 lg:max-w-xl">
+                <h3 class="text-3xl md:text-4xl font-black mb-6">Home Total Solution</h3>
+                <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                    임직원 전용 <span class="text-yellow-400 font-bold">인터넷 + TV 가입</span> 시<br>
+                    최대 <span class="text-white font-bold underline underline-offset-4 decoration-lgu-pink">현금 사은품 지원</span> 및 모바일 결합 할인이 적용됩니다.
+                </p>
+                <div class="flex flex-wrap gap-4 text-sm">
+                    <div class="bg-white/10 px-6 py-4 rounded-2xl border border-white/10">
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-widest mb-1">Premium TV</span>
+                        <span class="font-bold text-lg">U+tv 프리미엄</span>
+                    </div>
+                    <div class="bg-white/10 px-6 py-4 rounded-2xl border border-white/10">
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-widest mb-1">High-Speed</span>
+                        <span class="font-bold text-lg">1G 기가 인터넷</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white text-slate-900 p-10 rounded-3xl w-full lg:w-96 text-center shadow-2xl transform lg:rotate-2">
+                <p class="text-sm font-black mb-2 text-lgu-pink uppercase tracking-widest">Special Benefit</p>
+                <p class="text-5xl font-black mb-8 tracking-tighter">최대 100만원</p>
+                <div class="space-y-4">
+                    <a href="https://4x6w6.channel.io" target="_blank" class="block w-full bg-lgu-pink text-white py-4 rounded-2xl font-bold hover:bg-pink-700 transition shadow-xl shadow-pink-100">혜택 상담 신청하기</a>
+                    <p class="text-[10px] text-gray-400 leading-tight">※ 상품권+현금 포함 (방통위 가이드 준수 상품)<br>※ 결합 상품 구성에 따라 사은품이 변동될 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Info -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h3 class="text-3xl font-black italic lgu-pink mb-4">LGU+ Official Service Center</h3>
+                <p class="text-gray-500 font-medium font-medium">평택 지역 공식 인증 매장에서 최고의 서비스를 경험하세요.</p>
+            </div>
+            
+            <div class="space-y-20">
+                <!-- Pyeongtaek Region -->
+                <div class="reveal">
+                    <h4 class="text-xl font-black mb-8 flex items-center">
+                        <span class="w-1.5 h-6 bg-blue-500 mr-3 rounded-full"></span>평택 지역 매장
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="https://place.uplus.co.kr/shop/U6802161" target="_blank" class="group bg-slate-50 rounded-3xl overflow-hidden card-shadow border border-transparent hover:border-blue-500/30 transition-all">
+                            <div class="h-52 overflow-hidden">
+                                <img src="https://i.ibb.co/wZ21pLvd/image.png" alt="평택 중앙점" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div class="p-6 flex justify-between items-center bg-white">
+                                <div>
+                                    <p class="font-black text-slate-800 text-lg">평택 중앙점</p>
+                                    <p class="text-xs text-gray-500 mt-1">평택역 인근 번화가</p>
+                                </div>
+                                <span class="text-xs font-bold text-blue-500 bg-blue-50 px-3 py-1.5 rounded-full">정보보기</span>
+                            </div>
+                        </a>
+                        <a href="https://place.uplus.co.kr/shop/U4767389" target="_blank" class="group bg-slate-50 rounded-3xl overflow-hidden card-shadow border border-transparent hover:border-blue-500/30 transition-all">
+                            <div class="h-52 overflow-hidden">
+                                <img src="https://i.ibb.co/dw1Z7GLs/image.png" alt="평택 소사벌점" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div class="p-6 flex justify-between items-center bg-white">
+                                <div>
+                                    <p class="font-black text-slate-800 text-lg">평택 소사벌점</p>
+                                    <p class="text-xs text-gray-500 mt-1">소사벌 상업지구 내</p>
+                                </div>
+                                <span class="text-xs font-bold text-blue-500 bg-blue-50 px-3 py-1.5 rounded-full">정보보기</span>
+                            </div>
+                        </a>
+                        <a href="https://place.uplus.co.kr/shop/U6078384" target="_blank" class="group bg-slate-50 rounded-3xl overflow-hidden card-shadow border border-transparent hover:border-blue-500/30 transition-all">
+                            <div class="h-52 overflow-hidden">
+                                <img src="https://i.ibb.co/wHxM0Fw/image.png" alt="평택 송탄시장점" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            </div>
+                            <div class="p-6 flex justify-between items-center bg-white">
+                                <div>
+                                    <p class="font-black text-slate-800 text-lg">평택 송탄시장점</p>
+                                    <p class="text-xs text-gray-500 mt-1">송탄 시장 인근</p>
+                                </div>
+                                <span class="text-xs font-bold text-blue-500 bg-blue-50 px-3 py-1.5 rounded-full">정보보기</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form -->
+    <section id="apply" class="py-24 container mx-auto px-4 max-w-3xl">
+        <div class="reveal bg-white border-8 border-slate-50 rounded-[3rem] p-8 md:p-14 card-shadow relative">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-black mb-3">간편 상담 신청</h3>
+                <p class="text-gray-500 font-medium">임직원 인증을 위한 기업명을 정확히 입력해주세요.</p>
+            </div>
+            
+            <form id="consultForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-black text-slate-700 ml-1">성함</label>
+                        <input type="text" id="name" placeholder="실명을 입력하세요" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-lgu-pink/10 focus:border-lgu-pink focus:bg-white focus:outline-none transition-all placeholder:text-slate-300" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-black text-slate-700 ml-1">연락처</label>
+                        <input type="tel" id="phone" placeholder="010-0000-0000" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-lgu-pink/10 focus:border-lgu-pink focus:bg-white focus:outline-none transition-all placeholder:text-slate-300" required>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-black text-slate-700 ml-1">소속 기업명</label>
+                        <input type="text" id="company" placeholder="근무하시는 회사명" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-lgu-pink/10 focus:border-lgu-pink focus:bg-white focus:outline-none transition-all placeholder:text-slate-300" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-black text-slate-700 ml-1">관심 상담 모델</label>
+                        <select id="model" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-lgu-pink/10 focus:border-lgu-pink focus:bg-white focus:outline-none transition-all appearance-none text-slate-700">
+                            <option>선택해 주세요</option>
+                            <option>아이폰 17 시리즈 (번호이동)</option>
+                            <option>갤럭시 S26 시리즈 (신규/기변)</option>
+                            <option>인터넷 + TV 결합 상담</option>
+                            <option>아이폰 16 시리즈 (특별가)</option>
+                            <option>실속형/효도폰/키즈폰 (0원)</option>
+                            <option>기타 (종합 상담)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pt-6">
+                    <button type="submit" class="w-full bg-lgu-pink text-white py-5 rounded-[1.5rem] text-xl font-black shadow-2xl shadow-pink-200 hover:bg-pink-700 hover:-translate-y-1 transition-all active:scale-95">
+                        임직원 특별 혜택 신청하기
+                    </button>
+                    <p class="text-[11px] text-center text-gray-400 mt-6 leading-relaxed">
+                        개인정보 수집 및 상담 이용에 동의하며, 신청 시 담당 전문 상담사가 확인 후 순차적으로 연락드립니다.
+                    </p>
+                </div>
+            </form>
+
+            <!-- Registration QR -->
+            <div class="mt-16 bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col md:flex-row items-center gap-8">
+                <div class="w-32 h-32 bg-white p-2 rounded-2xl shadow-lg shrink-0 overflow-hidden">
+                    <a href="https://ucrm.lguplus.co.kr/mbl/v2/rcmd/moveInfo?param=YTMxMzcwNTI0NCYyMDIzMDQyMDAxMTczOCZRUkNEXw==" target="_blank">
+                        <img src="https://i.ibb.co/fztxrMjd/26IVX.jpg" alt="QR" class="w-full h-full object-contain">
+                    </a>
+                </div>
+                <div class="text-center md:text-left space-y-4">
+                    <div>
+                        <h5 class="text-emerald-700 font-black text-lg mb-1">U+ 우리매장 고객등록 추가 혜택</h5>
+                        <p class="text-emerald-600/80 text-sm font-medium">QR 스캔 후 고객등록 시 방문 사은품 및 추가 할인권 증정!</p>
+                    </div>
+                    <a href="https://ucrm.lguplus.co.kr/mbl/v2/rcmd/moveInfo?param=YTMxMzcwNTI0NCYyMDIzMDQyMDAxMTczOCZRUkNEXw==" target="_blank" class="inline-block bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-600 transition shadow-lg shadow-emerald-100">
+                        간편 등록 바로가기 >
                     </a>
                 </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-40 pb-24 lg:pt-56 lg:pb-40 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-3/5 fade-in">
-                    <h2 class="text-uplus-magenta font-black text-lg mb-4">평택 1등 공식인증 대리점</h2>
-                    <h1 class="section-title mb-8 leading-tight">
-                        유플러스의 모든 혜택,<br>
-                        <span class="uplus-magenta">평택중앙점</span>에서<br>
-                        가장 완벽하게 제안합니다.
-                    </h1>
-                    <p class="text-xl text-gray-500 mb-10 font-medium leading-relaxed">
-                        복잡한 결합할인부터 최신 단말기 지원금까지,<br>
-                        공공기관 출신 전문 상담사가 정직하게 설계해 드립니다.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="btn-uplus px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-pink-200">
-                            내 맞춤 요금제 계산하기
-                        </a>
-                        <div class="flex items-center gap-4 px-6 border-l-2 border-gray-100">
-                            <div class="text-left">
-                                <p class="text-xs text-gray-400 font-bold">누적 상담</p>
-                                <p class="text-lg font-black uplus-magenta">12,450건+</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Success Modal -->
+            <div id="successModal" class="hidden absolute inset-0 bg-white/95 backdrop-blur-md rounded-[3rem] flex flex-col items-center justify-center p-12 text-center z-[100]">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mb-6 scale-up">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.42-6.446z"/></svg>
                 </div>
-                <div class="lg:w-2/5 flex justify-center relative">
-                    <!-- iPhone Frame -->
-                    <div class="relative w-72 h-[580px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 shadow-[0_50px_100px_-20px_rgba(230,0,126,0.3)]">
-                        <div class="absolute top-0 w-full h-8 flex justify-center items-center">
-                            <div class="w-24 h-5 bg-black rounded-b-2xl"></div>
-                        </div>
-                        <div class="h-full w-full bg-white rounded-[2.5rem] overflow-hidden p-6 flex flex-col justify-between">
-                            <div>
-                                <p class="text-[10px] font-bold text-gray-400 mt-4">LG U+ SPECIAL EVENT</p>
-                                <h3 class="text-2xl font-black mt-2">오늘의 특가</h3>
-                                <div class="mt-8 space-y-4">
-                                    <div class="p-4 bg-gray-50 rounded-2xl">
-                                        <p class="text-xs font-bold text-gray-500">iPhone 15 Pro</p>
-                                        <p class="text-sm font-black uplus-magenta">최대 지원금 적용 중</p>
-                                    </div>
-                                    <div class="p-4 bg-gray-50 rounded-2xl">
-                                        <p class="text-xs font-bold text-gray-500">Galaxy S24</p>
-                                        <p class="text-sm font-black uplus-magenta">인터넷 결합 시 기기값 0원</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-100 h-32 rounded-3xl flex items-center justify-center">
-                                <i class="fa-solid fa-gift text-4xl text-pink-200"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Background Circle -->
-                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-50 rounded-full blur-3xl"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why U+ Section -->
-    <section id="benefits" class="py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="section-title mb-4">왜 <span class="uplus-magenta">유플러스 평택중앙점</span>인가요?</h2>
-                <p class="text-gray-500 font-medium">공식 홈페이지 이상의 서비스와 혜택을 약속합니다.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition duration-500">
-                    <div class="w-16 h-16 uplus-bg-magenta rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-pink-100">
-                        <i class="fa-solid fa-calculator text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 italic">정확한 요금 설계</h3>
-                    <p class="text-gray-500 leading-relaxed">
-                        사용 중인 카드, 결합된 가족, 포인트까지 하나도 놓치지 않고 분석하여 매월 나가는 통신비를 최소화해 드립니다.
-                    </p>
-                </div>
-
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition duration-500">
-                    <div class="w-16 h-16 uplus-bg-magenta rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-pink-100">
-                        <i class="fa-solid fa-wand-magic-sparkles text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 italic">프리미엄 콘텐츠</h3>
-                    <p class="text-gray-500 leading-relaxed">
-                        디즈니+, 넷플릭스, 티빙 구독을 더 스마트하게! 유독(U+DOCK) 서비스를 통해 가장 저렴하게 즐기는 법을 알려드립니다.
-                    </p>
-                </div>
-
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition duration-500">
-                    <div class="w-16 h-16 uplus-bg-magenta rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-pink-100">
-                        <i class="fa-solid fa-award text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 italic">평생 케어 서비스</h3>
-                    <p class="text-gray-500 leading-relaxed">
-                        한 번 고객은 평생 고객! 필름 무상 교체, 케이스 증정, 데이터 백업 등 매장 방문 시 언제나 친절하게 도와드립니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Consultation Section -->
-    <section id="contact" class="py-32 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-uplus-dark rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)]">
-                <!-- Branding Mark -->
-                <div class="absolute -right-20 -bottom-20 opacity-10">
-                    <i class="fa-solid fa-mobile-screen-button text-[300px]"></i>
-                </div>
-
-                <div class="relative z-10 text-center md:text-left">
-                    <span class="text-uplus-magenta font-bold tracking-widest uppercase text-sm mb-4 block">Reservation</span>
-                    <h2 class="text-4xl md:text-5xl font-black mb-12">전문가 1:1 상담 신청</h2>
-                    
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">이름</label>
-                                <input type="text" required placeholder="홍길동" class="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#E6007E] transition">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">연락처</label>
-                                <input type="tel" required placeholder="010-0000-0000" class="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#E6007E] transition">
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">상담 희망 내용</label>
-                            <select class="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#E6007E] transition appearance-none">
-                                <option class="text-black">기기변경/번호이동</option>
-                                <option class="text-black">아이폰 15 시리즈</option>
-                                <option class="text-black">갤럭시 S24 시리즈</option>
-                                <option class="text-black">인터넷 + TV 결합</option>
-                                <option class="text-black">기타 문의</option>
-                            </select>
-                        </div>
-                        <div class="flex items-center gap-3 pt-4">
-                            <input type="checkbox" id="agree" required class="w-5 h-5 rounded border-none bg-white/10">
-                            <label for="agree" class="text-sm text-gray-400 font-medium">개인정보 수집 및 상담 목적 이용에 동의합니다.</label>
-                        </div>
-                        <button type="submit" class="w-full btn-uplus py-6 rounded-2xl font-black text-xl shadow-2xl mt-8">
-                            최저가 혜택 상담 예약하기
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="location" class="py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="order-2 lg:order-1">
-                    <div class="bg-white p-4 rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
-                        <div class="bg-gray-200 w-full h-[500px] rounded-[2.5rem] flex items-center justify-center relative bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=600')] bg-cover opacity-50">
-                            <div class="absolute inset-0 bg-black/10"></div>
-                            <div class="relative z-10 text-center">
-                                <div class="w-16 h-16 uplus-bg-magenta rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce text-white shadow-xl">
-                                    <i class="fa-solid fa-location-dot text-2xl"></i>
-                                </div>
-                                <p class="bg-white px-6 py-2 rounded-full font-black text-sm uplus-magenta shadow-lg">유플러스 평택중앙점</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="section-title mb-10">오시는 길</h2>
-                    <div class="space-y-10">
-                        <div class="flex gap-6 items-start">
-                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-uplus-magenta border border-gray-100">
-                                <i class="fa-solid fa-map-pin text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-xl mb-2">매장 주소</h4>
-                                <p class="text-gray-500 font-medium leading-relaxed">
-                                    경기도 평택시 평택2로20번길 20 1층 유플러스
-                                </p>
-                                <p class="text-sm text-gray-400 mt-2">평택역 도보 3분 / 주차 가능</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 items-start">
-                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-uplus-magenta border border-gray-100">
-                                <i class="fa-solid fa-headset text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-xl mb-2">대표 번호</h4>
-                                <p class="text-2xl font-black uplus-dark tracking-tight">031-651-5019</p>
-                                <p class="text-gray-500 font-bold mt-1">010-9169-8678</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 items-start">
-                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-uplus-magenta border border-gray-100">
-                                <i class="fa-solid fa-clock text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-xl mb-2">영업 시간</h4>
-                                <p class="text-gray-500 font-medium">평일/주말 10:00 - 20:30</p>
-                                <p class="text-sm text-uplus-magenta font-bold mt-1">연중무휴 상담 가능</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h4 class="text-3xl font-black mb-3">신청이 완료되었습니다!</h4>
+                <p class="text-slate-600 mb-8 font-medium">입력하신 <span id="displayPhone" class="font-black text-lgu-pink text-2xl"></span> 번으로<br>담당자가 빠른 시간 내에 연락드리겠습니다.</p>
+                <button onclick="closeModal()" class="bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-black transition-all">확인</button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start mb-16">
-                <div>
-                    <div class="flex items-center gap-2 mb-6">
-                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="50" fill="#E6007E"/>
-                        </svg>
-                        <span class="text-xl font-black uppercase">평택<span class="uplus-magenta">중앙점</span></span>
+    <footer class="bg-slate-100 py-20 px-4 border-t border-slate-200">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start">
+                <div class="mb-10 lg:mb-0">
+                    <div class="bg-slate-300 text-white font-black px-2 py-1 rounded inline-block text-[10px] mb-4">OFFICIAL LGU+ PARTNER</div>
+                    <p class="text-xl font-black text-slate-800 mb-2">LGU+ 평택 공식 인증 특판 본부</p>
+                    <div class="space-y-1 text-sm text-slate-500 font-medium">
+                        <p>사업자등록번호: 189-81-00772 | 대표: 장효덕</p>
+                        <p>본 페이지는 LGU+ 공식 인증 대리점에서 운영하는 임직원 전용 채널입니다.</p>
                     </div>
-                    <p class="text-gray-400 text-sm max-w-sm font-medium">
-                        LG U+ 공식 인증 대리점으로서 고객님의 통신 가치를 높이기 위해 최선을 다합니다.
-                    </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 mt-10 md:mt-0">
+                <div class="lg:text-right space-y-4">
                     <div>
-                        <h5 class="font-black text-uplus-dark mb-4">서비스</h5>
-                        <ul class="text-sm text-gray-400 space-y-2 font-medium">
-                            <li><a href="#">기기변경</a></li>
-                            <li><a href="#">번호이동</a></li>
-                            <li><a href="#">인터넷+TV</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 class="font-black text-uplus-dark mb-4">고객지원</h5>
-                        <ul class="text-sm text-gray-400 space-y-2 font-medium">
-                            <li><a href="#">문의하기</a></li>
-                            <li><a href="#">매장안내</a></li>
-                            <li><a href="#">블로그</a></li>
-                        </ul>
+                        <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1">Customer Center</p>
+                        <p class="text-2xl font-black text-slate-800">평일 10:00 - 20:00</p>
+                        <p class="text-sm text-slate-500 font-medium mt-1">주말 및 공휴일은 실시간 채팅 상담을 이용해 주세요.</p>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-[11px] text-gray-400 font-medium">© 2024 LG U+ 평택중앙점. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <i class="fa-brands fa-instagram text-gray-300 cursor-pointer hover:text-uplus-magenta transition"></i>
-                    <i class="fa-solid fa-blog text-gray-300 cursor-pointer hover:text-uplus-magenta transition"></i>
-                    <i class="fa-solid fa-comment text-gray-300 cursor-pointer hover:text-uplus-magenta transition"></i>
-                </div>
+            <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">
+                    &copy; 2026 LGU+ Pyeongtaek Special Promotion Mall. All Rights Reserved.
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-        <div class="bg-white rounded-[3rem] p-12 max-w-sm w-full text-center shadow-2xl">
-            <div class="w-24 h-24 bg-pink-50 text-[#E6007E] rounded-full flex items-center justify-center mx-auto mb-8">
-                <i class="fa-solid fa-check text-4xl"></i>
-            </div>
-            <h3 class="text-2xl font-black mb-4">신청 완료!</h3>
-            <p class="text-gray-500 mb-10 leading-relaxed font-medium">평택중앙점 상담사가<br>확인 후 빠르게 연락드리겠습니다.</p>
-            <button onclick="closeModal()" class="w-full btn-uplus py-5 rounded-2xl font-black text-lg shadow-lg">
-                닫기
-            </button>
-        </div>
-    </div>
-
     <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            document.getElementById('success-modal').style.display = 'flex';
-            event.target.reset();
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+
+        // Product Details Toggle
+        function toggleDetails(brand) {
+            const details = document.getElementById(brand + '-details');
+            const arrow = document.getElementById(brand + '-arrow');
+            const isActive = details.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.model-details').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('h4 svg').forEach(el => el.classList.remove('rotate-180'));
+
+            if (!isActive) {
+                details.classList.add('active');
+                arrow.classList.add('rotate-180');
+            }
         }
 
-        function closeModal() {
-            document.getElementById('success-modal').style.display = 'none';
-        }
+        // Form Submission
+        const form = document.getElementById('consultForm');
+        const modal = document.getElementById('successModal');
+        const displayPhone = document.getElementById('displayPhone');
 
-        // Simple Intersection Observer for Fade-in
-        const observerOptions = {
-            threshold: 0.1
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            const phoneVal = document.getElementById('phone').value;
+            displayPhone.innerText = phoneVal;
+            
+            // Display modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Smooth scroll to top of modal if needed
+            modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            form.reset();
+        }
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        // Phone Auto-Hyphen
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,4})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
         });
     </script>
 </body>
